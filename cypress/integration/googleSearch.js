@@ -1,21 +1,28 @@
 describe("Google Search", () => {
-    it("loads Search page", () => {
+
+    const searchResults = [];
+    
+   
+  it("loads Search page", () => {
         cy.visit("https://google.com");
     });
 
-    it ("Search for 'North Carolina Surfing", () => {
-      cy.get('input[name="q"]').type("North Carolina Surfing{enter}");
+    it ("Search", () => {
+      cy.get('input[name="q"]').invoke('val', 'North Carolina Surfing');
+      cy.get('.FPdoLc > center > .gNO89b')
+        .click()
+      cy.wait(300)
     });
 
     it("get all search results", () => {
-        cy.get("#search a").invoke("attr", "href").then(href => console.log(href));
-    
+        cy.get("#search").find("a").each($a => searchResults.push($a));
     });
-    
-    it("click next ten times", () => {
-    for(let n = 0; n < 9; n ++){
-        cy.get('[style="display:block;margin-left:53px"]')
-          .click()
-      };
-    });
+    console.log(searchResults);
+
+    //it("run ten pages", () => {
+    //for(let n = 0; n < 9; n ++){
+    //    cy.get('[style="display:block;margin-left:53px"]')
+    //     .click()
+    // };
+    //});
 });
