@@ -19,10 +19,10 @@ describe("Google Search", () => {
     });
     console.log(searchResults);
 
-    //it("run ten pages", () => {
-    //for(let n = 0; n < 9; n ++){
-    //    cy.get('[style="display:block;margin-left:53px"]')
-    //     .click()
-    // };
-    //});
+    it("run ten pages", () => {
+    for(let n = 0; n < 9; n ++){
+        cy.get('[style="display:block;margin-left:53px"]')
+         .click()
+     };
+    });
 });
